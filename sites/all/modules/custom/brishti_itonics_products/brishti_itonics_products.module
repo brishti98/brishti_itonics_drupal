@@ -266,10 +266,12 @@ function brishti_itonics_products_form_validate($form, &$form_state) {
  * Form submission for brishti_itonics_products_form().
  */
 function brishti_itonics_products_form_submit($form, &$form_state) {
+  $description = htmlspecialchars($form_state['values']['description']['value'], ENT_QUOTES | ENT_HTML5, 'utf-8');
+
   $product = array(
     'title'       => $form_state['values']['title'],
     'summary'     => $form_state['values']['summary'],
-    'description' => $form_state['values']['description']['value'],
+    'description' => $description,
     'category'    => serialize($form_state['values']['category']),
     'type'        => $form_state['values']['type'],
     'owner_email' => $form_state['values']['owner_email'],
